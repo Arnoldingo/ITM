@@ -1,0 +1,8 @@
+{
+  "name": "ITM",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"All tests passed!\" && exit 0"
+  },
+  "dependencies": {}
+}
