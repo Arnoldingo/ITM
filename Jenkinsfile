@@ -4,10 +4,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-               git(
+                git(
                     url: 'https://github.com/Arnoldingo/ITM.git',
                     branch: 'main',
-                    credentialsId: 'github-credentials' 
+                    credentialsId: 'github-credentials'
                 )
             }
         }
@@ -15,7 +15,7 @@ pipeline {
         stage('Restore dependencies') {
             steps {
                 dir('frontend/EasyDevOpsApp') {
-                    sh 'dotnet restore'
+                    bat 'dotnet restore'
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
         stage('Build frontend') {
             steps {
                 dir('frontend/EasyDevOpsApp') {
-                    sh 'dotnet build --configuration Release'
+                    bat 'dotnet build --configuration Release'
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
         stage('Test frontend') {
             steps {
                 dir('frontend/EasyDevOpsApp') {
-                    sh 'dotnet test'
+                    bat 'dotnet test'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
         stage('Security test') {
             steps {
                 dir('frontend/EasyDevOpsApp') {
-                    sh 'dotnet list package --vulnerable'
+                    bat 'dotnet list package --vulnerable'
                 }
             }
         }
