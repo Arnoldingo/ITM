@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Arnoldingo/ITM.git'
+               git(
+                    url: 'https://github.com/Arnoldingo/ITM.git',
+                    credentialsId: 'github-credentials' 
+                )
             }
         }
 
