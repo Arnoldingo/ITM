@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/<jouw-username>/<repo-naam>.git'
+                git 'https://github.com/Arnoldingo/ITM.git'
             }
         }
 
         stage('Restore dependencies') {
             steps {
-                dir('frontend') {
+                dir('frontend/EasyDevOpsApp') {
                     sh 'dotnet restore'
                 }
             }
@@ -18,7 +18,7 @@ pipeline {
 
         stage('Build frontend') {
             steps {
-                dir('frontend') {
+                dir('frontend/EasyDevOpsApp') {
                     sh 'dotnet build --configuration Release'
                 }
             }
@@ -26,7 +26,7 @@ pipeline {
 
         stage('Test frontend') {
             steps {
-                dir('frontend') {
+                dir('frontend/EasyDevOpsApp') {
                     sh 'dotnet test'
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
 
         stage('Security test') {
             steps {
-                dir('frontend') {
+                dir('frontend/EasyDevOpsApp') {
                     sh 'dotnet list package --vulnerable'
                 }
             }
