@@ -6,6 +6,7 @@ pipeline {
             steps {
                git(
                     url: 'https://github.com/Arnoldingo/ITM.git',
+                    branch: 'main',
                     credentialsId: 'github-credentials' 
                 )
             }
